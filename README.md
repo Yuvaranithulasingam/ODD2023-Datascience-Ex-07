@@ -111,20 +111,71 @@ from sklearn.model_selection import train_test_split
 target = data['Survived'].values
 data_features_names = ['Pclass','Sex','SibSp','Parch','Fare','Embarked','Age']
 features = data[data_features_names].values
+```
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, mean_squared_error, r2_score
 
-#Build test and training test
-X_train,X_test,y_train,y_test = train_test_split(features,target,test_size=0.3,random_state=42)
+#### Split the data into training and test sets
+```
+X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.3, random_state=42)
+```
+#### Create a Random Forest classifier
+```
+my_forest = RandomForestClassifier(max_depth=5, min_samples_split=10, n_estimators=500, random_state=5, criterion='entropy')
+```
+#### Fit the model to the training data
+```
+my_forest.fit(X_train, y_train)
+```
+#### Make predictions on the test data
+```
+target_predict = my_forest.predict(X_test)
+```
+#### Evaluate the model's performance
+```
+accuracy = accuracy_score(y_test, target_predict)
+mse = mean_squared_error(y_test, target_predict)
+r2 = r2_score(y_test, target_predict)
 
-my_forest = RandomForestClassifier(max_depth=5, min_samples_split=10, n_estimators=500, random_state=5,criterion = 'entropy')
-
-
-my_forest_ = my_forest.fit(X_train,y_train)
-target_predict=my_forest_.predict(X_test)
-
-print("Random forest score: ",accuracy_score(y_test,target_predict))
-
-from sklearn.metrics import mean_squared_error, r2_score
-print ("MSE    :",mean_squared_error(y_test,target_predict))
-print ("R2     :",r2_score(y_test,target_predict))
+print("Random forest accuracy: ", accuracy)
+print("Mean Squared Error (MSE): ", mse)
+print("R-squared (R2) Score: ", r2)
 ```
 # OUPUT
+
+#### Initial data
+![image](https://github.com/Yuvaranithulasingam/ODD2023-Datascience-Ex-07/assets/121418522/34e84532-21ba-406f-b6ae-43e468ba7fae)
+
+#### Null values
+![image](https://github.com/Yuvaranithulasingam/ODD2023-Datascience-Ex-07/assets/121418522/dc89eb9f-733d-44a3-8620-bbce3da68f17)
+
+#### Describing the data
+![image](https://github.com/Yuvaranithulasingam/ODD2023-Datascience-Ex-07/assets/121418522/3758004d-5608-4ac4-a0c5-6ffa36f6afa2)
+
+#### Missing values
+![image](https://github.com/Yuvaranithulasingam/ODD2023-Datascience-Ex-07/assets/121418522/0628fd80-58ca-4fd5-9169-cb53b50f6a58)
+
+#### Data after cleaning
+![image](https://github.com/Yuvaranithulasingam/ODD2023-Datascience-Ex-07/assets/121418522/2f2da446-94b4-42f3-966b-edad86c7e89a)
+
+#### Data on Heatmap
+![image](https://github.com/Yuvaranithulasingam/ODD2023-Datascience-Ex-07/assets/121418522/23f125c4-66e2-4bfb-87ec-fa2df989f238)
+
+#### Report of(people survied & died)
+![image](https://github.com/Yuvaranithulasingam/ODD2023-Datascience-Ex-07/assets/121418522/6785d0e3-41b2-498f-8723-28b0795c2003)
+
+#### Cleaned null values
+![image](https://github.com/Yuvaranithulasingam/ODD2023-Datascience-Ex-07/assets/121418522/2729d6f8-d07e-4d60-ad12-ae64fa94b17a)
+
+#### Report of survied people's age
+![image](https://github.com/Yuvaranithulasingam/ODD2023-Datascience-Ex-07/assets/121418522/41429727-cc7a-4e53-a198-6b28e14d1c13)
+
+#### Report of pessengers
+![image](https://github.com/Yuvaranithulasingam/ODD2023-Datascience-Ex-07/assets/121418522/784a3ead-2996-48ee-a1f4-9d9ee6b3e32b)
+
+#### Report
+![image](https://github.com/Yuvaranithulasingam/ODD2023-Datascience-Ex-07/assets/121418522/56c8d8a9-8bdb-4190-afd5-7fe442241d56)
+
+## RESULT:
+Thus, Sucessfully performed the various feature selection techniques on a given dataset.
