@@ -111,11 +111,11 @@ from sklearn.model_selection import train_test_split
 target = data['Survived'].values
 data_features_names = ['Pclass','Sex','SibSp','Parch','Fare','Embarked','Age']
 features = data[data_features_names].values
-```
+
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, mean_squared_error, r2_score
-
+```
 #### Split the data into training and test sets
 ```
 X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.3, random_state=42)
